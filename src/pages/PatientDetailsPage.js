@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { usePatients } from "../context/PatientContext";
 import PatientCard from "../components/PatientCard";
