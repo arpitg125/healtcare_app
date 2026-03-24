@@ -19,12 +19,13 @@ export default function PatientDetailsPage() {
     setSelectedPatient,
   } = usePatients();
 
+  // ✅ Fixed: added patients and setSelectedPatient to deps array
   useEffect(() => {
     if (id) {
       const p = patients.find((p) => p.id === parseInt(id));
       if (p) setSelectedPatient(p);
     }
-  }, [id]);
+  }, [id, patients, setSelectedPatient]);
 
   if (id && selectedPatient && selectedPatient.id === parseInt(id)) {
     return (
@@ -161,6 +162,7 @@ function PatientProfile({ patient, onBack }) {
       : patient.status === "Critical"
         ? "status-critical"
         : "status-recovering";
+
   const vitals = [
     { label: "Blood Pressure", value: "120/80 mmHg", icon: "❤️" },
     { label: "Heart Rate", value: "78 bpm", icon: "💓" },
